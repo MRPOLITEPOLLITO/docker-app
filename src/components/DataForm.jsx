@@ -50,10 +50,9 @@ const form = () => {
     const newRecord = async () => {
       try {
         const response = await axios.post('/api/students', {responses})
-        //const res = await axios.get('/api/students')
         console.log(response)
         if(response.status === 200){
-          console.log('Success!!!')
+          router.reload()
         }
       } catch (error) {
         console.error('Error:', error)
@@ -68,7 +67,7 @@ const form = () => {
     console.log(responses)
   },[responses])
   return (
-    <form onSubmit={handleSubmit} className='flex flex-wrap justify-between bg-blue-950/50 backdrop-blur-lg px-16 py-12 rounded-md'>
+    <form onSubmit={handleSubmit} className='flex flex-wrap justify-between bg-blue-950/80 backdrop-blur-lg px-16 py-12 rounded-md'>
       <h1 className='w-full text-light text-5xl font-bold text-center mt-8 mb-14 hover:text-primary hover:-translate-y-1 duration-300'>Datos personales</h1>
       <QuestionLayout text='Nombre del Estudiante' icon={FaUser} className='w-[49%]' name='name'
         event={(name, value) => handleDataChange(name, value)} />

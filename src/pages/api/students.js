@@ -6,7 +6,6 @@ export default async function studentsManager(req, res) {
         case 'GET':
             try {
                 const response = await conn.query('SELECT * FROM students')
-                console.log(response)
                 if (response.rowCount === 0) {
                     throw new Error('Invalid query!')
                 }
