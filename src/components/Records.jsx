@@ -10,7 +10,7 @@ const CardView = ({ name, age, sex, career, level, ide, date, nplace, pplace, st
       </div>
       <p>{name}</p>
       <div className='w-full flex justify-between'>
-        <p className='text-right w-[45%]'><span className='font-bold'>Edad:</span> {age} {first ? 'si' : null}</p>
+        <p className='text-right w-[45%]'><span className='font-bold'>Edad:</span> {age}</p>
         <p className='px-1'> | </p>
         <p className='text-left w-[45%]'><span className='font-bold'>Sexo:</span> {sex}</p>
       </div>

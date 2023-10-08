@@ -4,7 +4,7 @@ let conn
 
 if (!conn) {
     conn = new Pool({
-        user: 'postgres',
+        user: 'localhost',
         password: '123456',
         host: 'postgres',
         port: 5432,
