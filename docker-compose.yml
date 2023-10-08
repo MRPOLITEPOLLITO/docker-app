@@ -1,0 +1,27 @@
+version: '3.8'
+
+networks:
+  myappnetwork:
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=upslp
+    networks:
+      - myappnetwork
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  app:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+    networks:
+      - myappnetwork

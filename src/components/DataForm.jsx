@@ -24,7 +24,7 @@ const QuestionLayout = ({ type = 'text', text = '', placeholder = '', pattern = 
   )
 }
 
-const form = () => {
+const Form = () => {
   let initialData = {
     name: '',
     age: '',
@@ -43,7 +43,7 @@ const form = () => {
   const [responses, setResponses] = useState(initialData)
   const router = useRouter()
   const handleDataChange = (name, value) => {
-    setResponses((prevData) => ({ ...prevData, [name]: name === 'type' ? questionTypeMap[value] : name === 'section' ?  sectionsMap[value] : value }))
+    setResponses((prevData) => ({ ...prevData, [name]: value }))
   }
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -103,4 +103,4 @@ const form = () => {
   )
 }
 
-export default form
+export default Form

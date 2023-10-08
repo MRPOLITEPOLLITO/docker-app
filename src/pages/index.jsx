@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import DataForm from '@/components/DataForm'
 import Records from '@/components/Records'
-import Navbar from '@/components/Navbar'
 
-const index = () => {
+const Index = () => {
   const [section, setSection] = useState(true)
   const handleClickForm = () => {
     setSection(true)
@@ -37,4 +36,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

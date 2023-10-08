@@ -6,7 +6,7 @@ if (!conn) {
     conn = new Pool({
         user: 'postgres',
         password: '123456',
-        host: 'localhost',
+        host: 'postgres',
         port: 5432,
         database: 'upslp'
     })
