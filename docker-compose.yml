@@ -25,7 +25,7 @@ services:
     # Volúmenes para ejecutar un script de inicialización de la base de datos y retener la información incluso si el contenedor se borra
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./pg_data:/var/lib/postgresql/data
+    #- ./pg_data:/var/lib/postgresql/data
   app:
     # Utilizamos la imagen de nuestra aplicación generada y almacenada en Docker Hub
     image: devi7uke/docker-app
