@@ -1,25 +1,42 @@
+# Versión de Docker Compose utilizada
 version: '3.8'
 
+# Definición de la red de contenedores para los servicios
 networks:
-  myappnetwork:
-    driver: bridge
+  myappnetwork:  # Nombre de la red personalizada
+
+# Definición de los servicios (contenedores)
 services:
   postgres:
+    # Imagen de la base de datos PostgreSQL
     image: postgres
+    # Reiniciar siempre que se detenga
     restart: always
+    # Variables de entorno para la configuración de la base de datos
     environment:
-      - DATABASE_HOST=127.0.0.1
-      - POSTGRES_PASSWORD=123456
-      - POSTGRES_DB=upslp
+      - POSTGRES_PASSWORD=123456  # Contraseña de la base de datos
+      - POSTGRES_DB=upslp  # Nombre de la base de datos
+    # Exponer el puerto de PostgreSQL para acceso directo
+    ports:
+      - "5432:5432"
+    # Conectar a la red personalizada para comunicación entre servicios
     networks:
       - myappnetwork
+    # Volúmenes para ejecutar un script de inicialización de la base de datos y retener la información incluso si el contenedor se borra
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./pg_data:/var/lib/postgresql/data
   app:
+    # Utilizamos la imagen de nuestra aplicación generada y almacenada en Docker Hub
     image: devi7uke/docker-app
+    # Construir la imagen a partir del Dockerfile en el directorio actual
+    #build: .
+    # Dependencia del servicio postgres, asegurando que se inicie primero
     depends_on:
       - postgres
+    # Mapear el puerto para acceder a la aplicación desde el host
     ports:
       - "3000:3000"
+    # Conectar a la red personalizada para comunicación entre servicios
     networks:
       - myappnetwork
