@@ -57,7 +57,7 @@ const Records = () => {
           date={item.student_t_date.split('T')[0]}
           nplace={item.student_birth_data}
           pplace={item.student_provenance}
-          state={item.student_state}
+          state={item.student_status}
           address={item.student_address}
           email={item.student_email}
           phone={item.student_phone}
